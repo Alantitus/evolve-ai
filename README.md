@@ -5,12 +5,10 @@ An intelligent chat-based application for generating and editing PowerPoint pres
 ## ✨ Features
 
 - 🤖 **AI-Powered Content Generation** - Using Google's Gemini 2.0 Flash Experimental model
-- 📊 **Streaming PPT Generation** - Real-time progress with visual feedback
 - 📄 **Multiple Export Formats** - PPTX download and PowerPoint Online
 - 🎨 **Slide Preview & Editing** - Visual preview with live editing capabilities
 - 🔐 **Authentication** - Supabase integration for multi-user support
 - 💬 **Chat-Based Interface** - Natural language commands for slide creation
-- 📱 **Mobile Responsive** - Fully optimized for mobile and tablet devices
 
 ## 🚀 Getting Started
 
@@ -44,8 +42,6 @@ Create a `.env.local` file in the root directory:
 ```env
 # Required: Gemini AI API Key
 NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
-
-# Optional: Supabase Configuration (for cloud features)
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
