@@ -82,10 +82,3 @@ After generating your presentation, you have multiple export options:
 
 - **PPTX (Green Button)** - Download as PowerPoint file (.pptx)
 
-
-### Authentication 
-
-- **Sign In** - Credentials
-email- john@yopmail.com
-password- John@123
-
