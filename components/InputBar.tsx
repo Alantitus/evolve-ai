@@ -20,7 +20,7 @@ export default function InputBar({ onSend, isLoading }: InputBarProps) {
   }
 
   return (
-    <div className="border-t border-gray-200 p-6">
+    <div className="border-t border-gray-200 p-3 lg:p-6">
       {/* Input Field */}
       <form onSubmit={handleSubmit} className="max-w-3xl mx-auto">
         <div className="relative">
@@ -28,8 +28,8 @@ export default function InputBar({ onSend, isLoading }: InputBarProps) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
-            rows={4}
-            className="w-full px-6 py-4 pr-32 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base resize-none"
+            rows={3}
+            className="w-full px-4 lg:px-6 py-3 lg:py-4 pr-20 lg:pr-32 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm lg:text-base resize-none"
             disabled={isLoading}
             onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) {
@@ -43,27 +43,27 @@ export default function InputBar({ onSend, isLoading }: InputBarProps) {
           />
           
           {/* Input Icons */}
-          <div className="absolute right-4 top-4 flex items-start gap-3">
+          <div className="absolute right-3 lg:right-4 top-3 lg:top-4 flex items-start gap-1 lg:gap-3">
             <button
               type="button"
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="hidden sm:block text-gray-400 hover:text-gray-600 transition-colors"
               title="Voice input"
             >
-              <Mic className="w-5 h-5" />
+              <Mic className="w-4 h-4 lg:w-5 lg:h-5" />
             </button>
             <button
               type="button"
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="hidden sm:block text-gray-400 hover:text-gray-600 transition-colors"
               title="Web search"
             >
-              <Globe className="w-5 h-5" />
+              <Globe className="w-4 h-4 lg:w-5 lg:h-5" />
             </button>
             <button
               type="button"
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="hidden sm:block text-gray-400 hover:text-gray-600 transition-colors"
               title="Attach file"
             >
-              <Paperclip className="w-5 h-5" />
+              <Paperclip className="w-4 h-4 lg:w-5 lg:h-5" />
             </button>
             <button
               type="submit"
@@ -71,7 +71,7 @@ export default function InputBar({ onSend, isLoading }: InputBarProps) {
               className="text-blue-600 hover:text-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               title="Send message"
             >
-              <Send className="w-5 h-5" />
+              <Send className="w-4 h-4 lg:w-5 lg:h-5" />
             </button>
           </div>
         </div>

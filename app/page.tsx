@@ -8,11 +8,13 @@ import Auth from '@/components/Auth'
 import { ChatProvider } from '@/contexts/ChatContext'
 import { useAuth } from '@/contexts/AuthContext'
 import { supabase } from '@/lib/supabase'
+import { Menu } from 'lucide-react'
 
 function MainApp() {
   const { user, loading } = useAuth()
   const [showAuth, setShowAuth] = useState(false)
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(null)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   
   const handleSessionSelect = (sessionId: string) => {
     console.log('Setting current session ID:', sessionId)
@@ -57,21 +59,48 @@ function MainApp() {
 
   return (
     <ChatProvider sessionId={currentSessionId} onCreateSession={handleSessionSelect}>
-      <div className="h-screen flex overflow-hidden">
+      <div className="h-screen flex overflow-hidden relative">
+        {/* Mobile Sidebar Overlay */}
+        {sidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
         {/* Left Sidebar */}
-        <Sidebar 
-          onSessionSelect={handleSessionSelect}
-          currentSessionId={currentSessionId}
-          onSessionDeleted={(sessionId) => {
-            // When a session is deleted, create a new one or set to null
-            if (sessionId === currentSessionId) {
-              setCurrentSessionId(null)
-            }
-          }}
-        />
+        <div className={`
+          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+          lg:translate-x-0
+          fixed lg:static
+          inset-y-0 left-0 z-50
+          transition-transform duration-300 ease-in-out
+        `}>
+          <Sidebar 
+            onSessionSelect={(sessionId) => {
+              handleSessionSelect(sessionId)
+              setSidebarOpen(false) // Close sidebar on mobile after selection
+            }}
+            currentSessionId={currentSessionId}
+            onSessionDeleted={(sessionId) => {
+              // When a session is deleted, create a new one or set to null
+              if (sessionId === currentSessionId) {
+                setCurrentSessionId(null)
+              }
+            }}
+          />
+        </div>
         
         {/* Main Content Area */}
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 flex flex-col overflow-hidden w-full">
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="lg:hidden fixed top-4 left-4 z-30 p-2 bg-white rounded-lg shadow-lg hover:bg-gray-50 transition-colors"
+          >
+            <Menu className="w-6 h-6 text-gray-700" />
+          </button>
+
           <main className="flex-1 overflow-hidden">
             <ChatInterface />
           </main>
