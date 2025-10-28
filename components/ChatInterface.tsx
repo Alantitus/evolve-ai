@@ -107,7 +107,7 @@ export default function ChatInterface() {
     <div className="flex flex-col lg:flex-row gap-6 h-full overflow-hidden">
       {/* Chat Panel */}
       <div className={`flex flex-col bg-gray-50 relative transition-all duration-300 overflow-hidden ${
-        showPreviewPanel ? 'lg:w-2/3 w-full lg:max-w-4xl pt-12 lg:pt-0' : 'w-full max-w-4xl mx-auto pt-12 lg:pt-0'
+        showPreviewPanel ? 'lg:w-2/3 w-full lg:max-w-4xl' : 'w-full max-w-4xl mx-auto'
       }`}>
         {/* Messages Area */}
         {messages.length === 0 ? (
